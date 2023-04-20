@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
-
 import MoviesList from "./components/MoviesList";
+import AddMovie from "./components/AddMovie";
 import "./App.css";
 
 function App() {
@@ -37,6 +37,9 @@ function App() {
     FetchMovieHandler();
   }, [FetchMovieHandler]);
 
+  const addMovieHandler = (movie)=>{
+    console.log(movie)
+  }
   let content = "No movies found";
   if (loading) {
     content = <h3>Loading...</h3>;
@@ -53,6 +56,9 @@ function App() {
   }
   return (
     <React.Fragment>
+      <section>
+        <AddMovie onAddMovie={addMovieHandler}></AddMovie>
+      </section>
       <section>
         <button onClick={FetchMovieHandler}>Fetch Movies</button>
       </section>
